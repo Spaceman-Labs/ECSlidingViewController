@@ -191,6 +191,12 @@ typedef enum {
  */
 - (UIPanGestureRecognizer *)panGesture;
 
+/** Returns a horizontal edge panning gesture for moving the top view from left to right.
+ 
+ This is typically added to the top view or a top view's navigation bar.
+ */
+- (UIScreenEdgePanGestureRecognizer *)screenEdgePanGestureLeft;
+
 /** Slides the top view in the direction of the specified side.
  
  A peek amount or reveal amount must be set for the given side. The top view will anchor to one of those specified values.

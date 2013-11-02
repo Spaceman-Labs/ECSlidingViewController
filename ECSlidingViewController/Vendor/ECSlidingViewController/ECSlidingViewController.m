@@ -23,6 +23,7 @@ NSString *const ECSlidingViewTopDidReset             = @"ECSlidingViewTopDidRese
 @property (nonatomic, assign) CGFloat initialTouchPositionX;
 @property (nonatomic, assign) CGFloat initialHorizontalCenter;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *screenEdgePanGestureLeft;
 @property (nonatomic, strong) UIPanGestureRecognizer *snapshotPanGesture;
 @property (nonatomic, strong) UITapGestureRecognizer *resetTapGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *topViewSnapshotPanGesture;
@@ -105,6 +106,9 @@ NSString *const ECSlidingViewTopDidReset             = @"ECSlidingViewTopDidRese
     self.shouldAdjustChildViewHeightForStatusBar = NO;
     self.resetTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resetTopView)];
     _panGesture          = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(updateTopViewHorizontalCenterWithRecognizer:)];
+	_screenEdgePanGestureLeft	= [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self
+																			  action:@selector(updateTopViewHorizontalCenterWithRecognizer:)];
+	_screenEdgePanGestureLeft.edges = UIRectEdgeLeft;
     self.resetTapGesture.enabled = NO;
     self.resetStrategy = ECTapping | ECPanning;
     self.panningVelocityXThreshold = 100;
